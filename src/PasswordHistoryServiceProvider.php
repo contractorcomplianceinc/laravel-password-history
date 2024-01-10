@@ -17,8 +17,14 @@ class PasswordHistoryServiceProvider extends ServiceProvider
     public function boot()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__ .'/config/password_history.php' => config_path('password_history.php')]);
-            $this->setMigrationFolder();
+            $this->publishes([
+                __DIR__ .'/config/password_history.php' => config_path('password_history.php'),
+                __DIR__ .'/Database/migrations/2018_04_08_033256_create_password_histories_table.php' => database_path('migrations/2018_04_08_033256_create_password_histories_table.php'),
+            ]);
+            
+            // commenting out for now as want to make the migration easily editable as laravel switched
+            // from unsigned integer to big unsigned integer and things will break without doing some reflection
+            // $this->setMigrationFolder();
         }
 
         $this->listenForModelChanges();
