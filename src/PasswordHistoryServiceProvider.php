@@ -18,6 +18,7 @@ class PasswordHistoryServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
+                __DIR__.'/lang/en' => lang_path('en/passwordHistory.php'),
                 __DIR__ .'/config/password_history.php' => config_path('password_history.php'),
                 __DIR__ .'/Database/migrations/2018_04_08_033256_create_password_histories_table.php' => database_path('migrations/2018_04_08_033256_create_password_histories_table.php'),
             ]);
