@@ -44,6 +44,6 @@ class NotBeInPasswordHistory implements Rule
      */
     public function message()
     {
-        return __('auth.password_used');
+        return __('passwordHistory.password_used');
     }
 }
